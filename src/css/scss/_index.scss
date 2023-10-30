@@ -1,0 +1,52 @@
+.section1,.section2 {
+  padding: 0 20%;
+}
+
+.titleInput {
+  flex-direction: row;
+  width: 30%;
+}
+
+.titleBtns {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  button {
+    margin: 0 1%;
+  }
+}
+.section2{
+  margin-top: 2%;
+}
+
+.dialogCard{
+  font-size: 18px;
+  color: $green-8;
+  font-weight: 700;
+  min-width: 500px;
+}
+
+//正方形上傳
+.custom-upload-container {
+  width: 200px;
+  height: 200px;
+  border: 2px dashed grey;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+// 取消醜部拉基預設
+.hidden-file-input {
+  display: none;
+}
+.image-preview {
+  margin-bottom: 10px;
+
+  .preview-image {
+    max-width: 100%;
+    max-height: 200px;
+    object-fit: contain;
+  }
+}
