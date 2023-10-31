@@ -70,7 +70,7 @@
 
         <q-card-actions align="right">
           <q-btn outlined  label="取消" color="negative" @click="cancelAdd"  />
-          <q-btn outlined  label="儲存" color="positive" @click="addAd" />
+          <q-btn outlined  label="儲存" color="positive" @click="saveAd" />
         </q-card-actions>
       </q-card>
     </q-dialog>
@@ -80,6 +80,8 @@
 <script setup>
 import { ref } from 'vue'
 import { useAdsStore } from '../stores/adsStore'
+import { useQuasar } from 'quasar'
+const $q = useQuasar()
 
 const adsStore = useAdsStore()
 const isEditing = ref(false)
@@ -113,6 +115,32 @@ function addAd () {
   newAd.value = { title: '', status: '', link: '', image: null }
   isEditing.value = false
   resetForm()
+}
+
+const saveAd = () => {
+  if (!newAd.value.title || !newAd.value.status) {
+    if (!newAd.value.title) {
+      $q.notify({
+        color: 'red-4',
+        textColor: 'white',
+        icon: 'error',
+        message: '請輸入廣告標題餐'
+
+      })
+    }
+    if (!newAd.value.status) {
+      $q.notify({
+        color: 'red-4',
+        textColor: 'white',
+        icon: 'error',
+        message: '請選擇廣告狀態'
+
+      })
+    }
+    return
+  }
+
+  addAd()
 }
 const cancelAdd = () => {
   showAddDialog.value = false
